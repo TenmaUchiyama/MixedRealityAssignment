@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 3f1e52dec055a3a4f850420ef19cb2b2, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 4c12da8dc5dced74e838120da11725a0, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -1507,8 +1507,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fcf8ff668240a140a1687fcbc915819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sunsetSkyMaterial: {fileID: 2100000, guid: 94d852a7748a347489661febea5eafc6, type: 2}
-  nightSkyMaterial: {fileID: 2100000, guid: 3f1e52dec055a3a4f850420ef19cb2b2, type: 2}
+  sunsetSkyMaterial: {fileID: 2100000, guid: 4c12da8dc5dced74e838120da11725a0, type: 2}
+  nightSkyMaterial: {fileID: 2100000, guid: c81599feeec05d14fbf3dd64b71864c8, type: 2}
+  eveningSkyMaterial: {fileID: 2100000, guid: f5dcd562bbe8e6741845a6ba29547444, type: 2}
 --- !u!1 &1589245842
 GameObject:
   m_ObjectHideFlags: 0

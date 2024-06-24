@@ -7,19 +7,26 @@ public class RotateSkyBox : MonoBehaviour
 
     [SerializeField] Material sunsetSkyMaterial;
     [SerializeField] Material nightSkyMaterial;
+    [SerializeField] Material eveningSkyMaterial;
 
 
     void Start()
     {
+        // コルーチンの起動
+        StartCoroutine(DelayCoroutine());
+
         RenderSettings.skybox = sunsetSkyMaterial;
     }
 
-    void Update()
+    // コルーチン本体
+    private IEnumerator DelayCoroutine()
     {
-        //エンターキーが入力された場合「true」
-        if (Input.GetKey(KeyCode.Return))
-        {
-            RenderSettings.skybox = nightSkyMaterial;
-        }
+        // 3秒間待つ
+        yield return new WaitForSeconds(3);
+        RenderSettings.skybox = eveningSkyMaterial;
+        // 3秒間待つ
+        yield return new WaitForSeconds(3);
+        RenderSettings.skybox = nightSkyMaterial;
+
     }
 }
