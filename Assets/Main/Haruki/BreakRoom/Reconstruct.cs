@@ -22,12 +22,12 @@ public class Reconstruct : MonoBehaviour
 
             bool tagAllowed = contact.otherCollider.gameObject.tag == this.triggerAllowedTag;
 
-            Object.Destroy(contact.otherCollider.gameObject);
-
             // Object is unfrozen if the colliding object has the correct tag (if tag filtering is enabled)
             // and the collision force exceeds the minimum collision force.
             if (tagAllowed)
             {
+                Object.Destroy(contact.otherCollider.gameObject);
+
                 var renderer = this.gameObject.GetComponent<Renderer>();
                 renderer.enabled = true;
 
