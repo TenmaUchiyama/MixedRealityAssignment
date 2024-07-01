@@ -23,7 +23,7 @@ public class RotationSun : MonoBehaviour
     {
         Vector3 housepos = smallhouse.transform.position;
         Vector3 sunpos = smallsun.transform.position;
-        Vector3 direction = sunpos - housepos;
+        Vector3 direction = housepos - sunpos;
 
         float dis = Vector3.Distance(housepos, sunpos);
         Debug.Log("距離は：" + dis);
@@ -35,10 +35,10 @@ public class RotationSun : MonoBehaviour
         // Apply the intensity to the directional light
         directionalLight.intensity = intensity;
 
-        // Calculate angle between house and sun
-        float angle = Vector3.Angle(direction, Vector3.right);
-        Debug.Log("角度：" + angle);
+        // ベクトルの正規化
+        direction.Normalize();
 
-        directionalLight.transform.rotation = Quaternion.Euler(angle,-90f,0f);
+        // 光源の向きをベクトルの方向に合わせて回転させる
+        directionalLight.transform.rotation = Quaternion.LookRotation(direction);
     }
 }

@@ -12,6 +12,6 @@ public class ObjectDistance : MonoBehaviour
         float moveX = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime; // 水平方向の移動
         float moveY = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;   // 垂直方向の移動
 
-        transform.position += new Vector3(moveX, moveY, 0); // オブジェクトの位置を更新
+        transform.position += new Vector3(0, moveY, moveX); // オブジェクトの位置を更新
     }
 }
