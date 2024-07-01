@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Reconstruct : MonoBehaviour
 {
+    Animator animator;
+    const string RESPAWN_TRIGGER = "respawn";
+
     [Tooltip("Only objects with this tag trigger the fracture.")]
     public string triggerAllowedTag;
 
@@ -12,6 +15,8 @@ public class Reconstruct : MonoBehaviour
     void Start()
     {
         this.customFracture = this.gameObject.GetComponent<CustomFracture>();
+
+        animator = this.gameObject.GetComponent<Animator>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -30,6 +35,8 @@ public class Reconstruct : MonoBehaviour
 
                 var renderer = this.gameObject.GetComponent<Renderer>();
                 renderer.enabled = true;
+
+                animator.SetTrigger(RESPAWN_TRIGGER);
 
                 this.customFracture.isBroken = false;
             }
