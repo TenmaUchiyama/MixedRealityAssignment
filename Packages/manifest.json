@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.dgreenheck.openfracture": "https://github.com/dgreenheck/OpenFracture.git",
     "com.meta.xr.sdk.all": "65.0.0",
     "com.meta.xr.sdk.interaction.ovr.samples": "65.0.0",
     "com.unity.collab-proxy": "2.3.1",
