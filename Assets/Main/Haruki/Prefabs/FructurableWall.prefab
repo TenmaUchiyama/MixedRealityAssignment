@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8937364505608157453}
   - component: {fileID: 8116062546428505971}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: FructurableWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
