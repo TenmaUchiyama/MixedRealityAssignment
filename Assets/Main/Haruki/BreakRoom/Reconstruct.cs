@@ -7,6 +7,9 @@ public class Reconstruct : MonoBehaviour
     Animator animator;
     const string RESPAWN_TRIGGER = "respawn";
 
+    [Tooltip("If activated, contact object will be destoryed.")]
+    public bool destory = false;
+
     [Tooltip("Only objects with this tag trigger the fracture.")]
     public string triggerAllowedTag;
 
@@ -31,7 +34,10 @@ public class Reconstruct : MonoBehaviour
             // and the collision force exceeds the minimum collision force.
             if (tagAllowed)
             {
-                Object.Destroy(contact.otherCollider.gameObject);
+                if (this.destory)
+                {
+                    Object.Destroy(contact.otherCollider.gameObject);
+                }
 
                 var renderer = this.gameObject.GetComponent<Renderer>();
                 renderer.enabled = true;
