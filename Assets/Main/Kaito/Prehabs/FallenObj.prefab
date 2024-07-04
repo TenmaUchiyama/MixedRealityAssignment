@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5697292094074781300}
   - component: {fileID: 131112282218554833}
   - component: {fileID: 5065744541276856625}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: FallenObj
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
