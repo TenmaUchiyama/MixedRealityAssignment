@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Meta.XR.MRUtilityKit;
 using Unity.VisualScripting;
+using Unity.VisualScripting.FullSerializer;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class SpawnHouse : MonoBehaviour
 {
-   [SerializeField] GameObject gameObject; 
+   [SerializeField] GameObject housePrefab; 
 
 
    private void Start() {
@@ -39,38 +40,48 @@ public class SpawnHouse : MonoBehaviour
         }
 
         MRUKAnchor nearestTable = this.ExtractNearestTable(tables); 
-        gameObject.transform.position = nearestTable.gameObject.transform.position;
+        GameObject houseObject = Instantiate(housePrefab,nearestTable.transform.position,Quaternion.identity );
+        
         Vector3 roomFaceDirection = room.GetFacingDirection(nearestTable); 
-        float originalAngle = Mathf.Atan2(roomFaceDirection.z, roomFaceDirection.x) * Mathf.Rad2Deg;
-        Vector3 rotatedDirection = Quaternion.Euler(0, 90, 0) * roomFaceDirection;
-        Vector3 rotatedDirection2 = Quaternion.Euler(0, 90, 0) * rotatedDirection;
-        Vector3 rotatedDirection3 = Quaternion.Euler(0, 90, 0) * rotatedDirection2;
-          ColorDebug("Original " + roomFaceDirection, "yellow");
-          ColorDebug("Rotated " + rotatedDirection, "yellow");
-          ColorDebug("LocalRotated " + (Mathf.Atan2(roomFaceDirection.z, rotatedDirection.x) * Mathf.Rad2Deg), "yellow");
-          ColorDebug("LocalRotated " + (Mathf.Atan2(roomFaceDirection.z, rotatedDirection2.x) * Mathf.Rad2Deg), "yellow");
-          ColorDebug("LocalRotated " + (Mathf.Atan2(roomFaceDirection.z, rotatedDirection3.x) * Mathf.Rad2Deg), "yellow");
+        
+
+        houseObject.transform.forward = roomFaceDirection;
+
 
           
-
-        gameObject.transform.forward = roomFaceDirection;
         ClassifyWall(walls, gameObject, roomFaceDirection);
        
     }
 
 
 
-    private void ClassifyWall(List<MRUKAnchor> walls, GameObject houseObject, Vector3 direction) 
+    private void ClassifyWall(List<MRUKAnchor> walls, GameObject houseObject, Vector3 roomDirection) 
     {
         foreach(MRUKAnchor wall in walls)
         {
-            Vector3 wallPosition = wall.transform.position; 
-            
-            var wallDirection = (wallPosition- houseObject.transform.position);
-            var WallDirectionInObject  = houseObject.transform.InverseTransformDirection(wallDirection); 
-            
+            Vector3 housePosition = houseObject.transform.position; 
+            wall.GetClosestSurfacePosition(housePosition, out Vector3 closestPosition);
 
-            ColorDebug(WallDirectionInObject, "yellow");
+
+            float angle = Vector3.SignedAngle(roomDirection, closestPosition, Vector3.up); 
+           
+
+             if (angle > -45f && angle <= 45f)
+            {
+               ColorDebug("Front: "+ angle);
+            }
+            else if (angle > 45f && angle <= 135f)
+            {
+               ColorDebug("Right: "+ angle);
+            }
+            else if (angle > 135f || angle <= -135f)
+            {
+                ColorDebug("Behind: "+ angle);
+            }
+            else if (angle > -135f && angle <= -45f)
+            {
+               ColorDebug("Left: "+ angle);
+            }
         }
         
     }
