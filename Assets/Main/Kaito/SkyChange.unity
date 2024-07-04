@@ -226,7 +226,6 @@ GameObject:
   - component: {fileID: 139766769}
   - component: {fileID: 139766768}
   - component: {fileID: 139766770}
-  - component: {fileID: 139766771}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -297,21 +296,6 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 0
---- !u!114 &139766771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 139766767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5b0125f10e268a43976f67ae2c93990, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectile: {fileID: 7334711930571015902, guid: b20de2df1ad2dad40a3355692b9c1d42, type: 3}
-  initialVelocity: 10
-  FireKey: 32
 --- !u!1 &201706614
 GameObject:
   m_ObjectHideFlags: 0
@@ -1811,6 +1795,7 @@ GameObject:
   - component: {fileID: 1589245844}
   - component: {fileID: 1589245843}
   - component: {fileID: 1589245846}
+  - component: {fileID: 1589245847}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1906,6 +1891,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSensitivity: 80
   playerBody: {fileID: 139766769}
+--- !u!114 &1589245847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589245842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5b0125f10e268a43976f67ae2c93990, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 7334711930571015902, guid: b20de2df1ad2dad40a3355692b9c1d42, type: 3}
+  initialVelocity: 50
+  FireKey: 32
 --- !u!1001 &1590409431
 PrefabInstance:
   m_ObjectHideFlags: 0
