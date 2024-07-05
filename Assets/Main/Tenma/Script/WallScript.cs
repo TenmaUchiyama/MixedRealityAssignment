@@ -8,6 +8,7 @@ public class WallScript : MonoBehaviour
 {
   
   private const string HAMMER_HEAD_TAG = "HammerHead";
+  private const string WAND_HEAD_TAG = "WandHead";
   [SerializeField] WallDirection thisWallDirection;
 
   private Dictionary<WallDirection, MRUKAnchor> wallDirections;
@@ -24,17 +25,39 @@ public class WallScript : MonoBehaviour
    void OnTriggerEnter(Collider other)
    {    
         
-        if(other.gameObject.tag != HAMMER_HEAD_TAG) return;
+        if(other.gameObject.tag == HAMMER_HEAD_TAG) {
         SmallHouse.Instance.ColorDebug(thisWallDirection, "red");
 
         if(wallDirections == null) return;
 
         MRUKAnchor thisWall = wallDirections[thisWallDirection];
         DestroyWall(thisWall);
-        
+        }
+
+
+        if(other.gameObject.tag == WAND_HEAD_TAG) {
+        SmallHouse.Instance.ColorDebug(thisWallDirection, "green");
+
+        if(wallDirections == null) return;
+
+        MRUKAnchor thisWall = wallDirections[thisWallDirection];
+        RestoreWall(thisWall);
+
+        }
    }
 
 
+   
+  private void RestoreWall(MRUKAnchor wall) 
+  {
+    GameObject wallChild = wall.gameObject.transform.GetChild(0).gameObject;
+
+    MeshRenderer renderer = wallChild.GetComponent<MeshRenderer>();
+    renderer.enabled = true;
+
+    renderer = this.gameObject.GetComponent<MeshRenderer>();
+    renderer.enabled = true;
+  }
 
    private void DestroyWall(MRUKAnchor wall)
    {
@@ -42,11 +65,10 @@ public class WallScript : MonoBehaviour
          GameObject wallChild = wall.gameObject.transform.GetChild(0).gameObject;
 
          MeshRenderer renderer = wallChild.GetComponent<MeshRenderer>();
-         Debug.Log($"Renderer: {renderer}");
          renderer.enabled = false;
 
          renderer = this.gameObject.GetComponent<MeshRenderer>();
-        renderer.enabled = false;
+         renderer.enabled = false;
        
     
         

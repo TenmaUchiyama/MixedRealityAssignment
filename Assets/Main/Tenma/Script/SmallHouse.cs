@@ -104,17 +104,17 @@ private void Awake() {
             }
             else if (angle > 45f && angle <= 135f)
             {
-               ColorDebug("Right: "+ angle);
+               
                 wallDirections.Add(WallDirection.Right, wall);
             }
             else if (angle > 135f || angle <= -135f)
             {
-                ColorDebug("Behind: "+ angle);
+                
                  wallDirections.Add(WallDirection.Behind, wall);
             }
             else if (angle > -135f && angle <= -45f)
             {
-               ColorDebug("Left: "+ angle);
+              
                 wallDirections.Add(WallDirection.Left, wall);
             }
         }
@@ -129,7 +129,6 @@ private void Awake() {
     public Dictionary<WallDirection, MRUKAnchor> GetWallDirections()
     {
 
-         ColorDebug($"FROM SmallHouse: {wallDirections.Count}", "blue");
         return wallDirections;
     }
 
