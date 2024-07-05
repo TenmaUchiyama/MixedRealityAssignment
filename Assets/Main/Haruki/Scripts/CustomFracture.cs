@@ -7,6 +7,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Rigidbody))]
 public class CustomFracture : MonoBehaviour
 {
+    private const string HAMMER_HEAD_TAG = "HammerHead";
     public TriggerOptions triggerOptions;
     public FractureOptions fractureOptions;
     public RefractureOptions refractureOptions;
@@ -68,65 +69,50 @@ public class CustomFracture : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if (triggerOptions.triggerType == TriggerType.Collision)
-        {
-            // FIXED
-            if (this.isBroken)
-            {
-                return;
-            }
+    // void OnCollisionEnter(Collision collision)
+    // {
+        // if (triggerOptions.triggerType == TriggerType.Collision)
+        // {
+        //     // FIXED
+        //     if (this.isBroken)
+        //     {
+        //         return;
+        //     }
 
-            if (collision.contactCount > 0)
-            {
-                // Collision force must exceed the minimum force (F = I / T)
-                var contact = collision.contacts[0];
-                float collisionForce = collision.impulse.magnitude / Time.fixedDeltaTime;
+        //     if (collision.contactCount > 0)
+        //     {
+        //         // Collision force must exceed the minimum force (F = I / T)
+        //         var contact = collision.contacts[0];
+        //         float collisionForce = collision.impulse.magnitude / Time.fixedDeltaTime;
 
-                // Colliding object tag must be in the set of allowed collision tags if filtering by tag is enabled
-                bool tagAllowed = triggerOptions.IsTagAllowed(contact.otherCollider.gameObject.tag);
+        //         // Colliding object tag must be in the set of allowed collision tags if filtering by tag is enabled
+        //         bool tagAllowed = triggerOptions.IsTagAllowed(contact.otherCollider.gameObject.tag);
 
-                // Object is unfrozen if the colliding object has the correct tag (if tag filtering is enabled)
-                // and the collision force exceeds the minimum collision force.
-                if (collisionForce > triggerOptions.minimumCollisionForce &&
-                   (triggerOptions.filterCollisionsByTag && tagAllowed))
-                {
-                    callbackOptions.CallOnFracture(contact.otherCollider, gameObject, contact.point);
-                    this.ComputeFracture();
-                    // FIXED
-                    this.isBroken = true;
-                }
-            }
-        }
-    }
+        //         // Object is unfrozen if the colliding object has the correct tag (if tag filtering is enabled)
+        //         // and the collision force exceeds the minimum collision force.
+        //         if (collisionForce > triggerOptions.minimumCollisionForce &&
+        //            (triggerOptions.filterCollisionsByTag && tagAllowed))
+        //         {
+        //             callbackOptions.CallOnFracture(contact.otherCollider, gameObject, contact.point);
+        //             this.ComputeFracture();
+        //             // FIXED
+        //             this.isBroken = true;
+        //         }
+        //     }
+        // }
+    // }
 
     void OnTriggerEnter(Collider collider)
     {
-        if (triggerOptions.triggerType == TriggerType.Trigger)
-        {
-            // Colliding object tag must be in the set of allowed collision tags if filtering by tag is enabled
-            bool tagAllowed = triggerOptions.IsTagAllowed(collider.gameObject.tag);
-
-            if (triggerOptions.filterCollisionsByTag && tagAllowed)
-            {
-                callbackOptions.CallOnFracture(collider, gameObject, transform.position);
-                this.ComputeFracture();
-            }
-        }
+        if (this.isBroken) return;
+        if(collider.gameObject.tag != HAMMER_HEAD_TAG) return;
+        Debug.Log("<color=yellow>hello from CustomFracture</color>");
+        callbackOptions.CallOnFracture(collider, gameObject, transform.position);
+        this.ComputeFracture();
+        this.isBroken = true;
     }
 
-    void Update()
-    {
-        if (triggerOptions.triggerType == TriggerType.Keyboard)
-        {
-            if (Input.GetKeyDown(triggerOptions.triggerKey))
-            {
-                callbackOptions.CallOnFracture(null, gameObject, transform.position);
-                this.ComputeFracture();
-            }
-        }
-    }
+
 
     /// <summary>
     /// Compute the fracture and create the fragments
@@ -192,7 +178,7 @@ public class CustomFracture : MonoBehaviour
 
                 // Deactivate the original object
                 // FIXED
-                //this.gameObject.SetActive(false);Å@Å@
+                //this.gameObject.SetActive(false);ÔøΩ@ÔøΩ@
                 var renderer = this.gameObject.GetComponent<Renderer>();
                 renderer.enabled = false;
 

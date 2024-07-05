@@ -26,22 +26,20 @@ public class WallScript : MonoBehaviour
    {    
         
         if(other.gameObject.tag == HAMMER_HEAD_TAG) {
-        SmallHouse.Instance.ColorDebug(thisWallDirection, "red");
 
         if(wallDirections == null) return;
 
         MRUKAnchor thisWall = wallDirections[thisWallDirection];
-        DestroyWall(thisWall);
+     
         }
 
 
         if(other.gameObject.tag == WAND_HEAD_TAG) {
-        SmallHouse.Instance.ColorDebug(thisWallDirection, "green");
 
         if(wallDirections == null) return;
 
         MRUKAnchor thisWall = wallDirections[thisWallDirection];
-        RestoreWall(thisWall);
+
 
         }
    }

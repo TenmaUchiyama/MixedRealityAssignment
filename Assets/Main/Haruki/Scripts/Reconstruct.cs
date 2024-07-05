@@ -22,30 +22,43 @@ public class Reconstruct : MonoBehaviour
         animator = this.gameObject.GetComponent<Animator>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    // private void OnCollisionEnter(Collision collision)
+    // {
+    //     if (collision.contactCount > 0)
+    //     {
+    //         var contact = collision.contacts[0];
+
+    //         bool tagAllowed = contact.otherCollider.gameObject.tag == this.triggerAllowedTag;
+
+    //         // Object is unfrozen if the colliding object has the correct tag (if tag filtering is enabled)
+    //         // and the collision force exceeds the minimum collision force.
+    //         if (tagAllowed)
+    //         {
+    //             if (this.destory)
+    //             {
+    //                 Object.Destroy(contact.otherCollider.gameObject);
+    //             }
+
+    //             var renderer = this.gameObject.GetComponent<Renderer>();
+    //             renderer.enabled = true;
+
+    //             animator.SetTrigger(RESPAWN_TRIGGER);
+
+    //             this.customFracture.isBroken = false;
+    //         }
+    //     }
+    // }
+
+    void OnTriggerEnter(Collider collider)
     {
-        if (collision.contactCount > 0)
-        {
-            var contact = collision.contacts[0];
-
-            bool tagAllowed = contact.otherCollider.gameObject.tag == this.triggerAllowedTag;
-
-            // Object is unfrozen if the colliding object has the correct tag (if tag filtering is enabled)
-            // and the collision force exceeds the minimum collision force.
-            if (tagAllowed)
-            {
-                if (this.destory)
-                {
-                    Object.Destroy(contact.otherCollider.gameObject);
-                }
-
-                var renderer = this.gameObject.GetComponent<Renderer>();
+        if (!this.customFracture.isBroken) return;
+        if (collider.gameObject.tag != this.triggerAllowedTag)  return;
+        var renderer = this.gameObject.GetComponent<Renderer>();
                 renderer.enabled = true;
 
                 animator.SetTrigger(RESPAWN_TRIGGER);
 
                 this.customFracture.isBroken = false;
-            }
-        }
+
     }
 }
