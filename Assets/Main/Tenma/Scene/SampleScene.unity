@@ -1153,7 +1153,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 146420048}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e65908aaf194e36428e3077489cec280, type: 3}
+  m_Script: {fileID: 11500000, guid: d6a11e6a9f8a7934e892f77327ab1743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   housePrefab: {fileID: 5281794219719023358, guid: 3d46df9c5bf321a4aa38ed36e0857e57, type: 3}
