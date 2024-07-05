@@ -30,6 +30,11 @@ public class Reconstruct : MonoBehaviour
     {
         if (collision.contactCount > 0)
         {
+            if (!this.customFracture.isBroken)
+            {
+                // If wall is not broken, do nothing
+                return;
+            }
             var contact = collision.contacts[0];
 
             bool tagAllowed = contact.otherCollider.gameObject.tag == this.triggerAllowedTag;
