@@ -7,10 +7,35 @@ using Unity.VisualScripting.FullSerializer;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class SpawnHouse : MonoBehaviour
-{
-   [SerializeField] GameObject housePrefab; 
 
+public enum WallDirection
+{
+    Front,
+    Right,
+    Left,
+    Behind,
+    Ceiling
+
+}
+public class SmallHouse : MonoBehaviour
+{
+
+    public static SmallHouse Instance {get; private set;}
+   [SerializeField] GameObject housePrefab; 
+   private Dictionary<WallDirection, MRUKAnchor> wallDirections = new Dictionary<WallDirection, MRUKAnchor>();
+   
+
+   
+private void Awake() {
+    if(Instance == null)
+    {
+        Instance = this; 
+    }
+    else
+    {
+        Destroy(this); 
+    }   
+}
 
    private void Start() {
     MRUK.Instance.RoomCreatedEvent.AddListener(OnRoomLoaded); 
@@ -37,6 +62,11 @@ public class SpawnHouse : MonoBehaviour
             {
                 walls.Add(anchor); 
             }
+
+            if(anchor.HasAnyLabel(MRUKAnchor.SceneLabels.CEILING))
+            {
+                wallDirections.Add(WallDirection.Ceiling, anchor); 
+            }
         }
 
         MRUKAnchor nearestTable = this.ExtractNearestTable(tables); 
@@ -57,6 +87,8 @@ public class SpawnHouse : MonoBehaviour
 
     private void ClassifyWall(List<MRUKAnchor> walls, GameObject houseObject, Vector3 roomDirection) 
     {
+
+
         foreach(MRUKAnchor wall in walls)
         {
             Vector3 housePosition = houseObject.transform.position; 
@@ -68,24 +100,38 @@ public class SpawnHouse : MonoBehaviour
 
              if (angle > -45f && angle <= 45f)
             {
-               ColorDebug("Front: "+ angle);
+               wallDirections.Add(WallDirection.Front, wall);
             }
             else if (angle > 45f && angle <= 135f)
             {
                ColorDebug("Right: "+ angle);
+                wallDirections.Add(WallDirection.Right, wall);
             }
             else if (angle > 135f || angle <= -135f)
             {
                 ColorDebug("Behind: "+ angle);
+                 wallDirections.Add(WallDirection.Behind, wall);
             }
             else if (angle > -135f && angle <= -45f)
             {
                ColorDebug("Left: "+ angle);
+                wallDirections.Add(WallDirection.Left, wall);
             }
         }
+
+       
+      
         
     }
 
+
+
+    public Dictionary<WallDirection, MRUKAnchor> GetWallDirections()
+    {
+
+         ColorDebug($"FROM SmallHouse: {wallDirections.Count}", "blue");
+        return wallDirections;
+    }
 
 
     private MRUKAnchor ExtractNearestTable(List<MRUKAnchor> anchors)
@@ -112,7 +158,7 @@ public class SpawnHouse : MonoBehaviour
         return nearestAnchor;
     }
 
-    private void ColorDebug<T>(T msg, string color = "yellow")
+    public void ColorDebug<T>(T msg, string color = "yellow")
     {
         Debug.Log($"<color={color}>{msg}</color>");
     }
