@@ -104,12 +104,12 @@ public class CustomFracture : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        if (this.isBroken) return;
+      
         if(collider.gameObject.tag != HAMMER_HEAD_TAG) return;
         Debug.Log("<color=yellow>hello from CustomFracture</color>");
         callbackOptions.CallOnFracture(collider, gameObject, transform.position);
         this.ComputeFracture();
-        this.isBroken = true;
+ 
     }
 
 
@@ -120,7 +120,11 @@ public class CustomFracture : MonoBehaviour
     /// <returns></returns>
     public void ComputeFracture()
     {
+        if (this.isBroken) return;
+        this.isBroken = true;
+         MRAudioPlayer.Instance.PlayWallDestroySound(this.transform.position);
         var mesh = this.GetComponent<MeshFilter>().sharedMesh;
+    
 
         if (mesh != null)
         {

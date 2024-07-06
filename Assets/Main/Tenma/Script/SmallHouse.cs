@@ -1,10 +1,6 @@
-using System;
-using System.Collections;
+
 using System.Collections.Generic;
 using Meta.XR.MRUtilityKit;
-using Unity.VisualScripting;
-using Unity.VisualScripting.FullSerializer;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 
@@ -99,22 +95,22 @@ private void Awake() {
            
 
              if (angle > -45f && angle <= 45f)
-            {
+            { ColorDebug("Front", "red");
                wallDirections.Add(WallDirection.Front, wall);
             }
             else if (angle > 45f && angle <= 135f)
             {
-               
+                ColorDebug("Right", "red");
                 wallDirections.Add(WallDirection.Right, wall);
             }
             else if (angle > 135f || angle <= -135f)
             {
-                
+                 ColorDebug("Behind", "red");
                  wallDirections.Add(WallDirection.Behind, wall);
             }
             else if (angle > -135f && angle <= -45f)
             {
-              
+               ColorDebug("Left", "red");
                 wallDirections.Add(WallDirection.Left, wall);
             }
         }

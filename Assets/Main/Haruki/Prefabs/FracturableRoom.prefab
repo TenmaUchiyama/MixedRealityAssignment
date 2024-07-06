@@ -46,7 +46,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 735960704062177043, guid: ccff74da25b08174e86a7ad6d1c1a667, type: 3}
       propertyPath: m_Name
-      value: FructurableWall (3)
+      value: Behind
       objectReference: {fileID: 0}
     - target: {fileID: 3029125123075784816, guid: ccff74da25b08174e86a7ad6d1c1a667, type: 3}
       propertyPath: m_LocalPosition.x
@@ -108,7 +108,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 735960704062177043, guid: ccff74da25b08174e86a7ad6d1c1a667, type: 3}
       propertyPath: m_Name
-      value: FructurableWall
+      value: Left
       objectReference: {fileID: 0}
     - target: {fileID: 3029125123075784816, guid: ccff74da25b08174e86a7ad6d1c1a667, type: 3}
       propertyPath: m_LocalPosition.x
@@ -170,7 +170,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 735960704062177043, guid: ccff74da25b08174e86a7ad6d1c1a667, type: 3}
       propertyPath: m_Name
-      value: FructurableCeil
+      value: Ceiling
       objectReference: {fileID: 0}
     - target: {fileID: 3029125123075784816, guid: ccff74da25b08174e86a7ad6d1c1a667, type: 3}
       propertyPath: m_LocalPosition.x
@@ -232,7 +232,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 735960704062177043, guid: ccff74da25b08174e86a7ad6d1c1a667, type: 3}
       propertyPath: m_Name
-      value: FructurableWall (2)
+      value: Front
       objectReference: {fileID: 0}
     - target: {fileID: 3029125123075784816, guid: ccff74da25b08174e86a7ad6d1c1a667, type: 3}
       propertyPath: m_LocalPosition.x

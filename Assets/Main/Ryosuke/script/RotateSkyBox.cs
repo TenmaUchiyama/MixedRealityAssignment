@@ -1,32 +1,58 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class RotateSkyBox : MonoBehaviour
 {
 
-    [SerializeField] Material sunsetSkyMaterial;
-    [SerializeField] Material nightSkyMaterial;
-    [SerializeField] Material eveningSkyMaterial;
+
+    [SerializeField] List<SkyMaterialSO> skyMaterials;
 
 
-    void Start()
+    private int currentSkyInd = 0;
+
+
+  
+
+    public void ChangeSkyBox()
     {
-        // ƒRƒ‹[ƒ`ƒ“‚Ì‹N“®
-        StartCoroutine(DelayCoroutine());
-
-        RenderSettings.skybox = sunsetSkyMaterial;
+         currentSkyInd = (currentSkyInd + 1) % skyMaterials.Count;
+        RenderSettings.skybox = GetRandomMaterial(skyMaterials[currentSkyInd].skyMaterials);
+           
     }
 
-    // ƒRƒ‹[ƒ`ƒ“–{‘Ì
-    private IEnumerator DelayCoroutine()
+    private Material GetRandomMaterial(List<Material> materials)
     {
-        // 3•bŠÔ‘Ò‚Â
-        yield return new WaitForSeconds(3);
-        RenderSettings.skybox = eveningSkyMaterial;
-        // 3•bŠÔ‘Ò‚Â
-        yield return new WaitForSeconds(3);
-        RenderSettings.skybox = nightSkyMaterial;
-
+        int randomIndex = Random.Range(0, materials.Count );
+        return materials[randomIndex];
     }
+
+    private void Update() {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            ChangeSkyBox();
+        }
+    }
+
+
+    // void Start()
+    // {
+    //     // ï¿½Rï¿½ï¿½ï¿½[ï¿½`ï¿½ï¿½ï¿½Ì‹Nï¿½ï¿½
+    //     StartCoroutine(DelayCoroutine());
+
+    //     RenderSettings.skybox = sunsetSkyMaterial;
+    // }
+
+    // // ï¿½Rï¿½ï¿½ï¿½[ï¿½`ï¿½ï¿½ï¿½{ï¿½ï¿½
+    // private IEnumerator DelayCoroutine()
+    // {
+    //     // 3ï¿½bï¿½Ô‘Ò‚ï¿½
+    //     yield return new WaitForSeconds(3);
+    //     RenderSettings.skybox = eveningSkyMaterial;
+    //     // 3ï¿½bï¿½Ô‘Ò‚ï¿½
+    //     yield return new WaitForSeconds(3);
+    //     RenderSettings.skybox = nightSkyMaterial;
+
+    // }
 }

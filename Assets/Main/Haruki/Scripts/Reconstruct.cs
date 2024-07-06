@@ -55,14 +55,25 @@ public class Reconstruct : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        if (!this.customFracture.isBroken) return;
+      
         if (collider.gameObject.tag != this.triggerAllowedTag)  return;
+        this.Reconstruction();
+    }
+
+
+    public void Reconstruction()
+    {
+        if (!this.customFracture.isBroken) return;
+
+        
         var renderer = this.gameObject.GetComponent<Renderer>();
-                renderer.enabled = true;
+        renderer.enabled = true;
 
-                animator.SetTrigger(RESPAWN_TRIGGER);
+        animator.SetTrigger(RESPAWN_TRIGGER);
+    
+        MRAudioPlayer.Instance.PlayWallReconstructSound(this.transform.position);
 
-                this.customFracture.isBroken = false;
+        this.customFracture.isBroken = false;
 
     }
 

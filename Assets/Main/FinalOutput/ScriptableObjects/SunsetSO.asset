@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb2745ac64a4b934fa237d525c1d1603, type: 3}
+  m_Name: SunsetSO
+  m_EditorClassIdentifier: 
+  skyMaterials:
+  - {fileID: 2100000, guid: 44d0573bf6d91e447b62f3aff840f2ae, type: 2}
+  - {fileID: 2100000, guid: a59fe87939f259d40a7ee37624c9568b, type: 2}
+  - {fileID: 2100000, guid: 6e00f8b39315691449f256740a5cb862, type: 2}
+  - {fileID: 2100000, guid: f5dcd562bbe8e6741845a6ba29547444, type: 2}
+  - {fileID: 2100000, guid: de1d750fefeeac642bf9b11a3978ccf5, type: 2}
+  - {fileID: 2100000, guid: 2b0ee035e6c540241b0977a4f54c7425, type: 2}
+  - {fileID: 2100000, guid: aed657681c6812845bb7736c343b5e9b, type: 2}
+  - {fileID: 2100000, guid: 9153b2dbef5d0b0428e60c092d1b4a12, type: 2}

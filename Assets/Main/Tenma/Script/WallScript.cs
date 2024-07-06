@@ -30,6 +30,8 @@ public class WallScript : MonoBehaviour
         if(wallDirections == null) return;
 
         MRUKAnchor thisWall = wallDirections[thisWallDirection];
+
+        DestroyWall(thisWall);
      
         }
 
@@ -39,6 +41,8 @@ public class WallScript : MonoBehaviour
         if(wallDirections == null) return;
 
         MRUKAnchor thisWall = wallDirections[thisWallDirection];
+
+        RestoreWall(thisWall);
 
 
         }
