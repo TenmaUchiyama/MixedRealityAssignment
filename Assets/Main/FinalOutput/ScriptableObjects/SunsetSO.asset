@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb2745ac64a4b934fa237d525c1d1603, type: 3}
   m_Name: SunsetSO
   m_EditorClassIdentifier: 
+  skySprite: {fileID: 21300000, guid: 0105f30f61cddc34dbd927295bbae0e2, type: 3}
   skyMaterials:
   - {fileID: 2100000, guid: 44d0573bf6d91e447b62f3aff840f2ae, type: 2}
   - {fileID: 2100000, guid: a59fe87939f259d40a7ee37624c9568b, type: 2}

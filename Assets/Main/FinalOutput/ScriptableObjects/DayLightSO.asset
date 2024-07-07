@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb2745ac64a4b934fa237d525c1d1603, type: 3}
   m_Name: DayLightSO
   m_EditorClassIdentifier: 
+  skySprite: {fileID: 21300000, guid: 318494f2745e77d4ea49523b386e8eb3, type: 3}
   skyMaterials:
   - {fileID: 2100000, guid: 12ccb828343c3405fb94289774b51aad, type: 2}
   - {fileID: 2100000, guid: d48a7646f5d0547e889733d84b50cb9f, type: 2}

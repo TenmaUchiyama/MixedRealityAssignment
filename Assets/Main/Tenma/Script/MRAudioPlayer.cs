@@ -28,9 +28,9 @@ public class MRAudioPlayer : MonoBehaviour
 
 
 
-      public void PlayWallDestroySound(Vector3 position)
+      public void PlayWallDestroySound(Vector3 position, float volume = 0.1f)
    {
-       PlaySound(audioSO.wallDestroySound, position);
+       PlaySound(audioSO.wallDestroySound, position, volume);
    }
 
 
@@ -39,7 +39,7 @@ public class MRAudioPlayer : MonoBehaviour
          PlaySound(audioSO.wallReconstructSound, position);
     }
 
-   private void PlaySound(AudioClip clip, Vector3 position)
+   private void PlaySound(AudioClip clip, Vector3 position, float volume = 1f)
    {
           GameObject audioSourceObject = Instantiate(audioSourcePrefab, position, Quaternion.identity);
         AudioSource audioSource = audioSourceObject.GetComponent<AudioSource>();
@@ -51,6 +51,7 @@ public class MRAudioPlayer : MonoBehaviour
             audioSource.minDistance = 1f;
             audioSource.maxDistance = 500f; // 必要に応じて調整
             audioSource.rolloffMode = AudioRolloffMode.Linear; // 必要に応じて変更
+            audioSource.volume = volume;
             audioSource.Play();
             
             // 再生が終わったらAudioSourceを破棄

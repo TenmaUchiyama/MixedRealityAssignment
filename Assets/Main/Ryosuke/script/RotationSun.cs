@@ -5,6 +5,7 @@ using UnityEngine.Experimental.GlobalIllumination;
 
 public class RotationSun : MonoBehaviour
 {
+    [SerializeField] float intensityOffset = 10f;
     private const string LIGHT_TAG = "MainLight";
     public GameObject smallhouse;
 
@@ -13,6 +14,7 @@ public class RotationSun : MonoBehaviour
 
 
     private Light directionalLight; 
+    
 
     // Start is called before the first frame update
     void Start()
@@ -32,8 +34,7 @@ public class RotationSun : MonoBehaviour
      
 
         // Calculate intensity based on distance
-        float intensity = (1f / (dis * dis + 1f)) * 2f; // ����`�Ȋ֐���
-
+         float intensity = Mathf.Exp(-dis *10f) * intensityOffset;
         // Apply the intensity to the directional light
         directionalLight.intensity = intensity;
 

@@ -1,25 +1,46 @@
-using System.Collections;
+
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using UnityEngine;
+using UnityEngine.UI;
+
+
+public enum SkyType
+{
+    Daytime, 
+    Sunset,
+    Night
+}
 
 public class RotateSkyBox : MonoBehaviour
 {
 
 
+    public static RotateSkyBox Instance { get; private set; }
+    
     [SerializeField] List<SkyMaterialSO> skyMaterials;
+    [SerializeField] Image sunsetSkyIcon; 
 
 
-    private int currentSkyInd = 0;
+    private int currentSkyInd = (int)SkyType.Daytime;
 
 
+    public SkyType GetCurrentSkyType()
+    {
+      return (SkyType)currentSkyInd;
+    }
+    private void Start() {
+        RenderSettings.skybox = GetRandomMaterial(skyMaterials[currentSkyInd].skyMaterials);
+        sunsetSkyIcon.sprite = skyMaterials[currentSkyInd].skySprite;
+      
+    }
   
 
     public void ChangeSkyBox()
     {
          currentSkyInd = (currentSkyInd + 1) % skyMaterials.Count;
         RenderSettings.skybox = GetRandomMaterial(skyMaterials[currentSkyInd].skyMaterials);
-           
+        sunsetSkyIcon.sprite = skyMaterials[currentSkyInd].skySprite;
+        BGMManager.Instance.SetCurrentTime((SkyType)currentSkyInd);
     }
 
     private Material GetRandomMaterial(List<Material> materials)
@@ -36,23 +57,4 @@ public class RotateSkyBox : MonoBehaviour
     }
 
 
-    // void Start()
-    // {
-    //     // �R���[�`���̋N��
-    //     StartCoroutine(DelayCoroutine());
-
-    //     RenderSettings.skybox = sunsetSkyMaterial;
-    // }
-
-    // // �R���[�`���{��
-    // private IEnumerator DelayCoroutine()
-    // {
-    //     // 3�b�ԑ҂�
-    //     yield return new WaitForSeconds(3);
-    //     RenderSettings.skybox = eveningSkyMaterial;
-    //     // 3�b�ԑ҂�
-    //     yield return new WaitForSeconds(3);
-    //     RenderSettings.skybox = nightSkyMaterial;
-
-    // }
 }

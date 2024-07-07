@@ -767,11 +767,11 @@ PrefabInstance:
       objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 3061869723412482768, guid: 5267904aa9d682e43a4c98db079b76ee, type: 3}
       propertyPath: m_Name
-      value: Behind
+      value: Front
       objectReference: {fileID: 0}
     - target: {fileID: 3136309108252464718, guid: 5267904aa9d682e43a4c98db079b76ee, type: 3}
       propertyPath: m_Name
-      value: Left
+      value: 'Right '
       objectReference: {fileID: 0}
     - target: {fileID: 3827811045653009307, guid: 5267904aa9d682e43a4c98db079b76ee, type: 3}
       propertyPath: isBroken
@@ -815,7 +815,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4828257152166075204, guid: 5267904aa9d682e43a4c98db079b76ee, type: 3}
       propertyPath: m_Name
-      value: Front
+      value: Behind
       objectReference: {fileID: 0}
     - target: {fileID: 5666602857522315459, guid: 5267904aa9d682e43a4c98db079b76ee, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -855,7 +855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7569283084233274842, guid: 5267904aa9d682e43a4c98db079b76ee, type: 3}
       propertyPath: m_Name
-      value: Right
+      value: Left
       objectReference: {fileID: 0}
     - target: {fileID: 8439140201010390375, guid: 5267904aa9d682e43a4c98db079b76ee, type: 3}
       propertyPath: isBroken
@@ -1145,7 +1145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d18735f265c58894caf9405c78b37ea0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisWallDirection: 2
+  thisWallDirection: 1
 --- !u!1 &389141778468936322 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3061869723412482768, guid: 5267904aa9d682e43a4c98db079b76ee, type: 3}
@@ -1351,7 +1351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d18735f265c58894caf9405c78b37ea0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisWallDirection: 3
+  thisWallDirection: 0
 --- !u!1 &437634650391614324 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2957099474140218150, guid: 5267904aa9d682e43a4c98db079b76ee, type: 3}
@@ -1856,7 +1856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d18735f265c58894caf9405c78b37ea0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisWallDirection: 1
+  thisWallDirection: 2
 --- !u!1 &5129248609290743749 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7509101775200272279, guid: 5267904aa9d682e43a4c98db079b76ee, type: 3}
@@ -2088,7 +2088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d18735f265c58894caf9405c78b37ea0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisWallDirection: 0
+  thisWallDirection: 3
 --- !u!114 &8074037090483002283 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6852171703212084217, guid: 5267904aa9d682e43a4c98db079b76ee, type: 3}
@@ -2211,6 +2211,10 @@ PrefabInstance:
       propertyPath: smallhouse
       value: 
       objectReference: {fileID: 5129248609290743749}
+    - target: {fileID: 7776792865390752845, guid: 3bd2dc89e16e1d6409795f8289c79943, type: 3}
+      propertyPath: intensityOffset
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 8098480527771709828, guid: 3bd2dc89e16e1d6409795f8289c79943, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.252

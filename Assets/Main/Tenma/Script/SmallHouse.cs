@@ -95,23 +95,24 @@ private void Awake() {
            
 
              if (angle > -45f && angle <= 45f)
-            { ColorDebug("Front", "red");
-               wallDirections.Add(WallDirection.Front, wall);
+            {
+               
+                 wallDirections.Add(WallDirection.Behind, wall);
             }
             else if (angle > 45f && angle <= 135f)
             {
-                ColorDebug("Right", "red");
-                wallDirections.Add(WallDirection.Right, wall);
+                 wallDirections.Add(WallDirection.Left, wall);
+             
             }
             else if (angle > 135f || angle <= -135f)
             {
-                 ColorDebug("Behind", "red");
-                 wallDirections.Add(WallDirection.Behind, wall);
+                wallDirections.Add(WallDirection.Front, wall);
+                 
             }
             else if (angle > -135f && angle <= -45f)
             {
-               ColorDebug("Left", "red");
-                wallDirections.Add(WallDirection.Left, wall);
+                 wallDirections.Add(WallDirection.Right, wall);
+               
             }
         }
 

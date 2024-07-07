@@ -106,7 +106,7 @@ public class CustomFracture : MonoBehaviour
     {
       
         if(collider.gameObject.tag != HAMMER_HEAD_TAG) return;
-        Debug.Log("<color=yellow>hello from CustomFracture</color>");
+    
         callbackOptions.CallOnFracture(collider, gameObject, transform.position);
         this.ComputeFracture();
  

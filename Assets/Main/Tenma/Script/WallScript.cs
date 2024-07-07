@@ -59,6 +59,9 @@ public class WallScript : MonoBehaviour
 
     renderer = this.gameObject.GetComponent<MeshRenderer>();
     renderer.enabled = true;
+
+
+    BGMManager.Instance.SetWallDirectionDeactive(thisWallDirection);
   }
 
    private void DestroyWall(MRUKAnchor wall)
@@ -72,8 +75,6 @@ public class WallScript : MonoBehaviour
          renderer = this.gameObject.GetComponent<MeshRenderer>();
          renderer.enabled = false;
        
-    
-        
-         
+          BGMManager.Instance.SetWallDirectionActive(thisWallDirection);
    }
 }

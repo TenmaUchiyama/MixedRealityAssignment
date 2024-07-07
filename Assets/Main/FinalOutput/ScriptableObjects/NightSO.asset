@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb2745ac64a4b934fa237d525c1d1603, type: 3}
   m_Name: NightSO
   m_EditorClassIdentifier: 
+  skySprite: {fileID: 21300000, guid: f39045624b5114b43a8c468c591b048c, type: 3}
   skyMaterials:
   - {fileID: 2100000, guid: ab675e6698bde46fd87143fb0d7580cb, type: 2}
   - {fileID: 2100000, guid: 1065b432639a84123a07ea43fe5ba4c9, type: 2}

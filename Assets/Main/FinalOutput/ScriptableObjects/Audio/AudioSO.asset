@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c64081e11a87faa4f82f308f7a9d68f3, type: 3}
   m_Name: AudioSO
   m_EditorClassIdentifier: 
-  wallDestroySound: {fileID: 8300000, guid: 95c216e7432f88a4f8eed6e51df7124c, type: 3}
+  wallDestroySound: {fileID: 8300000, guid: c8f8b0ef7762ff44db09f386473bc170, type: 3}
   wallReconstructSound: {fileID: 8300000, guid: e6aac959cc5d8204e8a48988c6bad24c, type: 3}
